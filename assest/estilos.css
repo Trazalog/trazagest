@@ -1,0 +1,79 @@
+﻿/* CSS Document */
+
+
+
+
+	
+.fondo2
+	{
+	color: #999 !important;
+	background-color: #FFF!important;
+	border-top-color: #000000!important;
+	border-right-color: #000000!important;
+	border-bottom-color: #C8C8C8!important;
+	border-left-color: #000000!important;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	}
+
+.cont1
+	{
+	background-color: #CFCFE7;
+	color: #333333;
+	moz-border-radius: 4px;
+	border-radius: 10px!important;
+	height: 20px!important;
+	width: 20px!important;
+	}
+	
+.cont2
+	{
+	background-color: #DDDDDD;!important
+	color: #333333;!important; 	
+	}
+.A
+	{
+	color: #FFF!important;
+	background-image: url(../imag/A.png)!important;
+	background-repeat: no-repeat!important;
+	font-size: 24px!important;
+	font-weight: normal!important;
+	text-align:center!important;
+	background-position: 0px 7px !important;
+	height: 50px;
+	width: 50px;
+	}
+.cont3s
+	{
+	background-color: #F00;
+	color: #FFF;
+	moz-border-radius: 4px;
+	border-radius: 10px!important;
+	height: 20px!important;
+	width: 20px!important;
+	background-repeat: no-repeat!important;
+	}
+.T
+	{
+	color: #FFF!important;
+	background-image: url(../imag/T.png)!important;
+	background-repeat: no-repeat!important;
+	font-size: 24px!important;
+	font-weight: normal!important;
+	text-align:center!important;
+	background-position: 0px 7px !important;
+	height: 50px;
+	width: 50px;
+	}
+.C
+	{
+	color: #FFF!important;
+	background-image: url(../imag/C.png)!important;
+	background-repeat: no-repeat!important;
+	font-size: 24px!important;
+	font-weight: normal!important;
+	text-align:center!important;
+	background-position: 0px 7px !important;
+	height: 50px;
+	width: 50px;
+	}	

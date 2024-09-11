@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Trazagest</title>
+	<link href="bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/3.3.6/css/estilo.css" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container"> <!-- Contenerdor margen de Pantalla standarizado -->
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="principal.php" class="glyphicon glyphicon-home btn btn-default" role="button"> Principal</a>
+                <form class="form-inline pull-right">
+                    <div class="form-group push-right">
+                        <label for="exampleInputName2">Busqueda</label>
+                        <input type="text" class="form-control" id="q" name="q"  value="">
+                    </div>
+                </form>
+                <br>
+                <br>
+
+                <?php
+                include("conexion.php");
+            	$link= new conexion();
+            	$link->conectarse();
+            	//ob_start();
+            	function inviertefecha($f) {
+                	$datos = explode("-",$f);
+                	$fecha[]= $datos[0];
+                	$fecha[] = $datos[1];
+                	$fecha[] = $datos[2];
+                	$total=$fecha[2]."-".$fecha[1]."-".$fecha[0];
+                	return  $total;
+            	}
+
+            	$sql3=" SELECT
+                    nro_expediente,
+                	fecha,
+                    e.extraxto,
+                	concat_ws(' ', TRIM(i.Apellido), TRIM(i.Nombre)) as iniciad,
+                	   es.descripcion,
+                	   e.id_estado,
+                       id_iniciador,
+                       t.descripcion,
+                       fecha_entrada,
+                       letras,
+                       motivo_final,
+                       e.id_estado,
+                	   e.id_resolucion,e.id_expediente, e.estado_final
+                    FROM
+                       expedientes e
+                    JOIN tipo_expedientes t
+                	   on e.id_tipo = t.id_tipolegajos
+                    JOIN estados es
+                	   on e.id_estado = es.id_estado
+                    JOIN iniciador i
+                	   on e.id_iniciador = i.dni
+                    ORDER BY
+                        nro_expediente";
+
+            	$res3=mysql_query($sql3) or die($sql3);
+            	listarasigna($res3);//Lista los datos del Funcionario
+
+
+                function listarasigna($result) { // inicio y seleccion de lo que quiero mostrar
+                    echo'<div class="panel panel-default">';
+                    echo'<div class="panel-heading"><h3 class="panel-title">Expedientes</h3></div>';
+                    echo '<table class="table table-hover table-bordered" id="expedientes">';
+                    // Establish the output variable
+                    echo '<thead>';
+                	echo '<tr>';
+                        print "<th><strong>Nro expediente</strong></th>";
+                        print "<th><strong>Fecha</strong></th>";
+                        print "<th><strong>Extracto</strong></th>";
+                        print "<th><strong>Iniciador</strong></th>";
+                        print "<th><strong>Estado</strong></th>";
+                    echo '</tr>';
+                    echo '</thead>';
+
+                    while ($registro = mysql_fetch_row($result)) {
+
+                        echo "<tr class='info' style='cursor:pointer' onClick=\"edita('".$registro[0]."');\">";
+                        $estado=$registro[5];
+                            echo "<td >$registro[0]</td>";
+                            echo "<td >$registro[1]</td>";
+                            echo "<td >$registro[2]</td>";
+                            echo "<td >$registro[3]</td>";
+                            echo "<td >$registro[4]</td>";
+
+            			switch ($estado) {
+            				case "Ingresado":
+            				    echo "<td class='cont3' align=\"center\">$registro[4]</td>";
+            				    break;
+            				case "Asignado":
+            				    echo "<td class='cont4' align=\"center\">$registro[4]</td>";
+            				    break;
+            				case "Solucionado":
+            				    echo "<td class='cont5' align=\"center\">$registro[4]</td>";
+            				    break;
+            			}
+
+                        echo "</tr>";
+                    }
+
+                    echo "</table>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            	?>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script src="jquery.uitablefilter.js" type="text/javascript"></script>
+<script language="javascript">
+    $(function() {
+        theTable = $("#expedientes");
+        $("#q").keyup(function() {
+            $.uiTableFilter(theTable, this.value);
+        });
+    });
+</script>
+
+<script>
+    function principal() {
+    	document.formlitexp.action = "principal.php";
+    	document.formlitexp.submit();
+    }
+    function edita(expe) {
+        var opciones = "scrolling=yes target=_blank toolbar=0,location=0,status=0,menubar=0,scrollbars=yes,fullscreen=yes,height=screen.availHeight,width=screen.availWidth";
+        window.open("panelexpediente.php?expe="+expe,"nombreventa na", opciones);
+    }
+</script>
+
+</html>

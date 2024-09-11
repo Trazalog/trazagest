@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dropdown menu ejemplo 1 - Bootstrap 3</title>
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+
+    <!--[if lt IE 9]>
+15
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+16
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+17
+    <![endif]-->
+
+  </head>
+
+  <body>
+
+   <div class='container'>
+
+    
+
+           <div class="dropdown">
+
+       <div class='btn-group'>
+
+     
+
+     <!-- Configurar el botón dropdown -->
+
+        <button class='btn btn-info'>Opciones</button>
+
+              <button class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+
+     <span class="caret"></span>
+
+     <span class="sr-only">Toggle Dropdown</span>
+
+     </button>
+
+        <!-- Configurar el botón dropdown -->
+
+      
+
+     <!-- Lista de opciones -->
+
+              <ul class="dropdown-menu">
+
+       <li class="dropdown-header">CABECERA 1</li>
+
+                <li><a href="#">Link 1</a></li>
+
+                <li><a href="#">Link 2</a></li>
+
+                <li><a href="#">Link 3</a></li>
+
+                <li class="divider"></li>
+
+                <li class="dropdown-header">CABECERA 2</li>
+
+                <li><a href="#">Link 1</a></li>
+
+                <li><a href="#">Link 2</a></li>
+
+    </li>
+
+    <li class="disabled"><a href="#">Desactivado</a></li>
+
+              </ul>
+
+    <!-- Lista de opciones -->
+
+     
+
+     </div>
+
+            </div>
+
+   </div>
+
+
+
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Cambiar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">devcode</a>
+        </div>
+ 
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toogle" data-toggle="dropdown">menu3<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                     <li><a href="#">sub menu</a></li>
+                     <li><a href="#">sub menu</a></li>
+                     <li><a href="#">sub menu</a></li>
+                     <li><a href="#">sub menu</a></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+      </nav>
+
+  </body>
+
+</html>
